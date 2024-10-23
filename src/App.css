@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Прелоадер */
+.preloader {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+}
+
+h1 {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 154, 0, 1) 10%, rgba(208, 222, 33, 1) 20%, rgba(79, 220, 74, 1) 30%, rgba(63, 218, 216, 1) 40%, rgba(47, 201, 226, 1) 50%, rgba(28, 127, 238, 1) 60%, rgba(95, 21, 242, 1) 70%, rgba(186, 12, 248, 1) 80%, rgba(251, 7, 217, 1) 90%, rgba(255, 0, 0, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.loading-text {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: green;
+  transition: width 0.1s linear;
+}
+
+/* Основной контент */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spin-area {
+  height: 80%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.bonus-images {
+  display: flex;
+  flex-direction: column;
+}
+
+.bonus-images img {
+  width: 100px;
+  margin: 10px 0;
+}
+
+/* Кнопка */
+.spin-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #ff5a5f;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.spin-button:hover {
+  background-color: #ff3b3f;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Экран победителя */
+.winner-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ffef5a;
+}
+
+.winner-screen h1 {
+  font-size: 4rem;
+  color: #333;
+}
+
+/* Анимация для вращения */
+@keyframes spin {
+  0% {
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    transform: translateY(-1200px);
+    /* Настрой это значение под высоту изображения */
   }
+}
+
+.spinning .bonus-images {
+  animation: spin 3s ease-in-out infinite;
 }
